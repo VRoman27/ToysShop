@@ -1,13 +1,13 @@
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Toy {
-    AtomicInteger counter = new AtomicInteger(0);
+    static int counter = 0;
     private int id;
     private float chance;
     private String name;
 
     Toy(String name, float chance){
-        this.id = counter.getAndIncrement();
+        this.id = ++counter;
         this.chance = chance;
         this.name = name;
     }
