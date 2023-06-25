@@ -2,9 +2,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Toy {
     AtomicInteger counter = new AtomicInteger(0);
-    int id;
-    float chance;
-    String name;
+    private int id;
+    private float chance;
+    private String name;
 
     Toy(String name, float chance){
         this.id = counter.getAndIncrement();
@@ -15,4 +15,9 @@ public class Toy {
     int GetId(){ return this.id; }
     float GetChance(){ return this.chance;}
     String GetName(){ return this.name;}
+
+    @Override
+    public String toString() {
+        return this.id + ": " + this.name + " |" + this.chance;
+    }
 }
