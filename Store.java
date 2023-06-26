@@ -5,6 +5,7 @@ import java.util.PriorityQueue;
 public class Store {
     ArrayList<Toy> toys;
     PriorityQueue<Toy> toyQueue;
+    ArrayList<Toy> result;
 
     public Store() {
         this.toys = new ArrayList<Toy>();
@@ -15,6 +16,7 @@ public class Store {
                         return Float.compare(t1.GetChance(), t2.GetChance());
                     }
                 });
+        this.result = new ArrayList<Toy>();
     }
 
     public void AddToy(Toy toy) {
@@ -27,21 +29,21 @@ public class Store {
         }
     }
 
-    void CreateQueue() {
+    private void CreateQueue() {
         toyQueue.clear();
         float tmpChanceSum = 0;
         for (Toy toy : toys) {
             tmpChanceSum += toy.GetChance();
         }
         for (Toy toy : toys) {
-            int tmpCountToy = (int) ((toy.GetChance() / tmpChanceSum) * 100) ;
+            int tmpCountToy = (int) ((toy.GetChance() / tmpChanceSum) * 100);
             for (int i = 0; i < tmpCountToy; i++) {
                 toyQueue.add(toy);
             }
         }
     }
 
-    public void PrintQueue(){
+    public void PrintQueue() {
         CreateQueue();
         for (Toy toy : toyQueue) {
             System.out.println(toy);
@@ -55,5 +57,21 @@ public class Store {
             toyQueue.poll();
         }
         return toyQueue.poll();
+    }
+
+    public ArrayList<Toy> GetResult(int count) {
+        result.clear();
+        for (int i = 0; i < count; i++) {
+            result.add(GetToy());
+        }
+        return result;
+    }
+
+    public String resultToString() {
+        String data = "";
+        for (Toy toy : result) {
+            data += toy.toString() + "\n";
+        }
+        return data;
     }
 }
