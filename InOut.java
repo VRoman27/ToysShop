@@ -4,10 +4,9 @@ import java.util.Scanner;
 
 public class InOut {
     static String Input(String text){
-        try (Scanner in = new Scanner(System.in)) {
-            System.out.print(text);
-            return in.nextLine();
-        }
+        Scanner in = new Scanner(System.in);
+        System.out.print(text);
+        return in.nextLine();
     }
 
     static void Save(String path, String data){
