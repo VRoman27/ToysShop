@@ -1,13 +1,13 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class InOut {
     static String Input(String text){
-        Scanner in = new Scanner(System.in);
-        System.out.print(text);
-        return in.nextLine();
+        try (Scanner in = new Scanner(System.in)) {
+            System.out.print(text);
+            return in.nextLine();
+        }
     }
 
     static void Save(String path, String data){
